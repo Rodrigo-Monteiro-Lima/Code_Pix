@@ -3,22 +3,26 @@ package model
 import (
 	"time"
 
+	"github.com/asaskevich/govalidator"
 	uuid "github.com/satori/go.uuid"
 )
 
 type Bank struct {
-	ID        string    `json:"id"`
-	Name      string    `json:"name"`
-	Code      string    `json:"code"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+	Base `valid:"required"`
+	Name string `json:"name" valid:"notnull"`
+	Code string `json:"code" valid:"notnull"`
 }
 
 func (bank *Bank) isValid() error {
+	_, err := govalidator.ValidateStruct(bank)
+	if err != nil {
+		return err
+	}
+	
 	return nil
 }
 
-func NewBank (code string, name string) (*Bank, error) {
+func NewBank(code string, name string) (*Bank, error) {
 	bank := Bank{
 		Code: code,
 		Name: name,
@@ -31,6 +35,6 @@ func NewBank (code string, name string) (*Bank, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return &bank, nil
 }
