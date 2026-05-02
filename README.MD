@@ -1,10 +1,10 @@
 ## Microsserviço CodePix
 
-Esse microsserviço tem o objetivo de ser um hub de transações entre os bancos que simularemos durante o projeto.
+Esse microsserviço tem o objetivo de ser um hub de transações entre os bancos que foram simulados durante o projeto.
 
 ## Como executar
 
-Utilizamos Docker para que todos os serviços que utilizaremos fiquem disponíveis.
+Foi utilizado o Docker para que todos os serviços fiquem disponíveis.
 
 - Faça o clone do projeto
 - Tendo o docker instalado em sua máquina apenas execute:
